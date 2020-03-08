@@ -7,12 +7,12 @@ namespace TriviaApiTests
 {
     public class Tests
     {
-        private OpenTriviaDatabaseApi api;
+        private OpenTriviaDbNetApi api;
         
         [SetUp]
         public void Setup()
         {
-            api = new OpenTriviaDatabaseApi();
+            this.api = new OpenTriviaDbNetApi();
         }
 
         [Test]

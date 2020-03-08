@@ -9,19 +9,19 @@ using OpenTriviaDbNet.Models;
 
 namespace OpenTriviaDbNet
 {
-    public class OpenTriviaDatabaseApi
+    public class OpenTriviaDbNetApi
     {
         private const string QuestionBaseUrl = "https://opentdb.com/api.php";
         private const string CategoryBaseUrl = "https://opentdb.com/api_category.php";
         private const string TokenBaseUrl = "https://opentdb.com/api_token.php";
-        
-        public string SessionToken { get; private set; }
 
-        public OpenTriviaDatabaseApi()
+        public OpenTriviaDbNetApi()
         {
             
         }
-        
+
+        public string SessionToken { get; private set; }
+
         public async Task<TriviaCategory[]> GetCategories()
         {
             var client = new HttpClient();
@@ -31,7 +31,7 @@ namespace OpenTriviaDbNet
             var apiResponse = JsonConvert.DeserializeObject<CategoryResponse>(content);
             return apiResponse.TriviaCategories;
         }
-        
+
         public async Task<Question[]> GetQuestions(int numberOfQuestions, int? category, Enums.QuestionType? questionType, Enums.Difficulty? difficulty)
         {
             if (string.IsNullOrEmpty(SessionToken))
@@ -74,11 +74,11 @@ namespace OpenTriviaDbNet
             SessionToken = apiResponse.Token;
         }
 
-        private string GetQuestionQueryString(int numberOfQuestions, int? category, Enums.QuestionType? questionType,
-            Enums.Difficulty? difficulty)
+        private string GetQuestionQueryString(int numberOfQuestions, int? category = null, 
+            Enums.QuestionType? questionType = null, Enums.Difficulty? difficulty = null)
         {
             var query = new List<string>();
-            query.Add($"amount= {numberOfQuestions}");
+            query.Add($"amount={numberOfQuestions}");
 
             if (category.HasValue)
             {
@@ -108,7 +108,10 @@ namespace OpenTriviaDbNet
                     break;
             }
             
-            query.Add($"token={SessionToken}");
+            if (!string.IsNullOrEmpty(SessionToken))
+            {
+                query.Add($"token={SessionToken}");
+            }
             
             var queryString = string.Join("&", query);
             return queryString;

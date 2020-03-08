@@ -1,4 +1,4 @@
-namespace OpenTriviaDbNet.Models
+namespace OpenTriviaDbNet
 {
     public class Enums
     {
