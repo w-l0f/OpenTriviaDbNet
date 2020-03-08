@@ -2,6 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <Title>OpenTriviaDbNet</Title>
+        <Authors>William Löf</Authors>
+        <Description>Api implementation of open trivia database (https://opentdb.com)</Description>
+        <Summary>Api implementation of open trivia database (https://opentdb.com)</Summary>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageProjectUrl>https://github.com/w-l0f/OpenTriviaDbNet</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/w-l0f/OpenTriviaDbNet/blob/master/LICENSE.md</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/w-l0f/OpenTriviaDbNet</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
