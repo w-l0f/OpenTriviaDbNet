@@ -32,7 +32,8 @@ namespace OpenTriviaDbNet
             return apiResponse.TriviaCategories;
         }
 
-        public async Task<Question[]> GetQuestions(int numberOfQuestions, int? category, Enums.QuestionType? questionType, Enums.Difficulty? difficulty)
+        public async Task<Question[]> GetQuestions(int numberOfQuestions, int? category = null, 
+            Enums.QuestionType? questionType = null, Enums.Difficulty? difficulty = null)
         {
             if (string.IsNullOrEmpty(SessionToken))
             {
@@ -74,8 +75,8 @@ namespace OpenTriviaDbNet
             SessionToken = apiResponse.Token;
         }
 
-        private string GetQuestionQueryString(int numberOfQuestions, int? category = null, 
-            Enums.QuestionType? questionType = null, Enums.Difficulty? difficulty = null)
+        private string GetQuestionQueryString(int numberOfQuestions, int? category, Enums.QuestionType? questionType, 
+            Enums.Difficulty? difficulty)
         {
             var query = new List<string>();
             query.Add($"amount={numberOfQuestions}");

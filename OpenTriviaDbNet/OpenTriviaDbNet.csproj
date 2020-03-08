@@ -10,6 +10,7 @@
         <PackageProjectUrl>https://github.com/w-l0f/OpenTriviaDbNet</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/w-l0f/OpenTriviaDbNet/blob/master/LICENSE.md</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/w-l0f/OpenTriviaDbNet</RepositoryUrl>
+        <PackageVersion>1.0.1</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
