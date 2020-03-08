@@ -1,4 +1,4 @@
-// MIT LICENSE
+## MIT LICENSE
 
 Copyright 2020 William Löf
 
