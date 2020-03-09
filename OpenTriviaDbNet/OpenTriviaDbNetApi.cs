@@ -22,7 +22,7 @@ namespace OpenTriviaDbNet
 
         public string SessionToken { get; private set; }
 
-        public async Task<TriviaCategory[]> GetCategories()
+        public async Task<TriviaCategory[]> GetCategoriesAsync()
         {
             var client = new HttpClient();
             var res = await client.GetAsync(CategoryBaseUrl);
@@ -32,12 +32,12 @@ namespace OpenTriviaDbNet
             return apiResponse.TriviaCategories;
         }
 
-        public async Task<Question[]> GetQuestions(int numberOfQuestions, int? category = null, 
+        public async Task<Question[]> GetQuestionsAsync(int numberOfQuestions, int? category = null, 
             Enums.QuestionType? questionType = null, Enums.Difficulty? difficulty = null)
         {
             if (string.IsNullOrEmpty(SessionToken))
             {
-                await CreateSessionToken();
+                await CreateSessionTokenAsync();
             }
             
             var client = new HttpClient();
@@ -50,11 +50,11 @@ namespace OpenTriviaDbNet
             return apiResponse.Results;
         }
 
-        public async Task ResetSessionToken()
+        public async Task ResetSessionTokenAsync()
         {
             if (string.IsNullOrEmpty(SessionToken))
             {
-                await CreateSessionToken();
+                await CreateSessionTokenAsync();
                 return;
             }
             
@@ -63,7 +63,7 @@ namespace OpenTriviaDbNet
             var res = await client.GetAsync(url);
         }
 
-        public async Task CreateSessionToken()
+        public async Task CreateSessionTokenAsync()
         {
             var client = new HttpClient();
             var url = $"{TokenBaseUrl}?command=request";

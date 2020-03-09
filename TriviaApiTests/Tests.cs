@@ -18,33 +18,33 @@ namespace TriviaApiTests
         [Test]
         public async Task GetCategories()
         {
-            var categories = await this.api.GetCategories();
+            var categories = await this.api.GetCategoriesAsync();
             Assert.That(categories.Length, Is.Not.Zero);
         }
         
         [Test]
         public async Task GetQuestion()
         {
-            var questions = await this.api.GetQuestions(1, null, null, null);
+            var questions = await this.api.GetQuestionsAsync(1, null, null, null);
             Assert.That(questions.Length, Is.EqualTo(1));
         }
 
         [Test]
         public async Task GetQuestionsWithFilter()
         {
-            var questions = await this.api.GetQuestions(5, null, Enums.QuestionType.MultiChoice, Enums.Difficulty.Easy);
+            var questions = await this.api.GetQuestionsAsync(5, null, Enums.QuestionType.MultiChoice, Enums.Difficulty.Easy);
             Assert.That(questions.Length, Is.EqualTo(5));
         }
         
         [Test]
         public async Task GetResetSessionToken()
         {
-            await this.api.CreateSessionToken();
+            await this.api.CreateSessionTokenAsync();
             var originalToken = this.api.SessionToken;
-            await this.api.CreateSessionToken();
+            await this.api.CreateSessionTokenAsync();
             Assert.That(this.api.SessionToken, Is.Not.EqualTo(originalToken));
 
-            await this.api.ResetSessionToken();
+            await this.api.ResetSessionTokenAsync();
         }
     }
 }

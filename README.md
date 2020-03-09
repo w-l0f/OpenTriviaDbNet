@@ -1,5 +1,9 @@
 # OpenTriviaDbNet
-.net standard api for open trivia database https://opentdb.com/
+Asynchronous api implementation for Open Trivia Database written in .net standard
+
+The api is instance based making it suitable for injection
+
+Open Trivia Database: https://opentdb.com/
 
 ## Example
 ```
@@ -8,9 +12,9 @@ var api = new OpenTriviaDbNetApi();
 ```
 ```
 // session token ensures unique questions
-await api.CreateSessionToken();
+await api.CreateSessionTokenAsync();
 ```
 ```
 // get 10 questions
-var questions = await api.GetQuestions(10);
+var questions = await api.GetQuestionsAsync(10);
 ```
