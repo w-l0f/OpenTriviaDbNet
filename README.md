@@ -5,6 +5,9 @@ The api is instance based making it suitable for injection
 
 Open Trivia Database: https://opentdb.com/
 
+## Install
+Available as nuget: https://www.nuget.org/packages/OpenTriviaDbNet/
+
 ## Example
 ```
 // create api instance
